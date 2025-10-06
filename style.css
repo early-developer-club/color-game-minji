@@ -1,5 +1,8 @@
-:root{
-.stat small{ color: var(--muted); }
+:root
+.stat small{ color: var(--muted); 
+--cols: 2;                       /* JS가 단계별로 갱신 */
+--tileMax: clamp(64px, 12vw, 120px);  /* 데스크탑에서 과하게 커지지 않도록 상한 */
+}
 
 
 .timer{ position: relative; flex:1; height: 14px; border-radius: 999px; background: rgba(255,255,255,.08); overflow:hidden; border:1px solid rgba(255,255,255,.12); }
@@ -11,11 +14,15 @@ background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)
 border:1px solid rgba(255,255,255,.08);
 border-radius: var(--radius-2xl);
 padding: clamp(12px, 2.6vw, 18px);
+max-width: min(720px, 92vw);
+margin-inline: auto;
 }
 
 
 .grid{
 display:grid; gap: clamp(6px, 1.6vw, 10px);
+grid-template-columns: repeat(var(--cols), minmax(56px, var(--tileMax)));
+justify-content: center; /* 중앙 정렬 */
 transition: transform .15s ease, filter .2s ease;
 }
 .tile{
@@ -68,3 +75,11 @@ footer{ margin-top: 16px; text-align:center; color: var(--muted); font-size: 12p
 .btn, .tile, .grid{ transition:none !important; }
 .shake{ animation:none !important; }
 }
+
+header.app-header{
+  display:flex;
+  justify-content: center;  /* 가운데 정렬 */
+  align-items: center;
+}
+
+.brand h1{ text-align:center; }
