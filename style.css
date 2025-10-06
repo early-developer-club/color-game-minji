@@ -1,0 +1,70 @@
+:root{
+.stat small{ color: var(--muted); }
+
+
+.timer{ position: relative; flex:1; height: 14px; border-radius: 999px; background: rgba(255,255,255,.08); overflow:hidden; border:1px solid rgba(255,255,255,.12); }
+.timer > .bar{ position:absolute; inset:0; width: 100%; transform-origin:left center; background: linear-gradient(90deg, #98f7c5, #f6f173, #ff9f6e); }
+
+
+.grid-wrap{
+background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+border:1px solid rgba(255,255,255,.08);
+border-radius: var(--radius-2xl);
+padding: clamp(12px, 2.6vw, 18px);
+}
+
+
+.grid{
+display:grid; gap: clamp(6px, 1.6vw, 10px);
+transition: transform .15s ease, filter .2s ease;
+}
+.tile{
+width:100%; aspect-ratio: 1 / 1; border-radius: 10px;
+box-shadow: 0 3px 10px rgba(0,0,0,.25), inset 0 0 0 1px rgba(255,255,255,.08);
+transition: transform .08s ease, box-shadow .2s ease, filter .2s ease;
+user-select:none;
+}
+.tile:active{ transform: scale(.98); }
+
+
+/* 효과 */
+.shake{ animation: shake .35s ease both; }
+@keyframes shake{
+10%, 90% { transform: translate3d(-1px, 0, 0); }
+20%, 80% { transform: translate3d(2px, 0, 0); }
+30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+
+/* 시작/종료 화면 */
+.hero{ display:grid; gap: 14px; text-align:center; }
+.hero h2{ margin: 8px 0 0; font-size: clamp(20px, 6vw, 28px); }
+.hero p{ margin:0; color:var(--muted); line-height:1.65; }
+
+
+.rule-list{ text-align:left; display:grid; gap:8px; margin: 10px auto; max-width: 640px; }
+.rule{ background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); padding:12px 14px; border-radius:14px; }
+
+
+.controls{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top: 6px; }
+.toggle{ display:flex; gap:10px; align-items:center; background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); padding:10px 12px; border-radius:12px; }
+.toggle input{ width:20px; height:20px; }
+
+
+.center{ display:flex; align-items:center; justify-content:center; gap:10px; }
+.mt-12{ margin-top:12px; }
+
+
+.end-card{ text-align:center; display:grid; gap: 12px; }
+.end-card .big{ font-size: clamp(20px, 6vw, 30px); font-weight:800; }
+.meta{ color: var(--muted); }
+
+
+footer{ margin-top: 16px; text-align:center; color: var(--muted); font-size: 12px; }
+
+
+@media (prefers-reduced-motion: reduce){
+.btn, .tile, .grid{ transition:none !important; }
+.shake{ animation:none !important; }
+}
